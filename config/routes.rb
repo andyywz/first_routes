@@ -10,11 +10,16 @@ FirstRoutes::Application.routes.draw do
   # put 'users/:id' => 'users#update'
   # delete 'users/:id' => 'users#destroy'
 
-  resources :users do
+  resources :users, :except => [:new, :edit] do
     resources :contacts, :only => [:index]
+    resources :favorites, :only => [:index, :create]
+
+    delete 'favorites' => 'favorites#destroy', :as => 'favorite'
   end
 
-  resources :contacts, :except => [:index]
+  resources :contacts, :except => [:index, :new, :edit]
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

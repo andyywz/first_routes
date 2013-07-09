@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
   validates :email, :uniqueness => true, :allow_nil => true
 
   has_many :contacts
+  has_many :favorites, :through => :contacts
 end
