@@ -2,9 +2,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-
     render :json => @users
-    #render :text => {'text' => "I'm in the index action!"}.to_json
   end
 
   def create
@@ -23,20 +21,14 @@ class UsersController < ApplicationController
 
   def update
     user = User.find(params[:id])
-    if user
-      user.name = params[:name] if params[:name]
-      user.email = params[:email] if params[:email]
-      user.save!
-      render :json => user
-    end
+    user.update_attributes!(params[:user])
+    render :json => user
   end
 
   def destroy
     user = User.find(params[:id])
-    if user
-      user.destroy
-      render :json => {message: "Destroyed user #{user.id}"}
-    end
+    user.destroy
+    render :json => {message: "Destroyed user #{user.id}"}
   end
 end
 

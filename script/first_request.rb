@@ -5,7 +5,7 @@ url = Addressable::URI.new(
   scheme: 'http',
   host: 'localhost',
   port: 3000,
-  path: '/users/1.json',
+  path: '/contacts/3.json',
   # query_values: {
   #   'some_category[a_key]' => 'another value',
   #   'some_category[a_second_key]' => 'yet another value',
@@ -15,9 +15,13 @@ url = Addressable::URI.new(
 ).to_s
 
 
-
+# RestClient.get(url)
+# RestClient.post(url, {contact: {name: "blah", email: "blah@blah.com", user_id: 2}})
 # RestClient.post(url, {user: {name: "hahahhahahaa"}})
-
-RestClient.put(url, name: 123, email: "Im a new email")
-
+# RestClient.put(url, {user: {name: "Im a noobie!!", email: "Im not real..."}})
 # RestClient.delete(url)
+# RestClient.get(url)
+
+# RestClient.put(url, {contact: {name: "Im a super noobie!!", email: "Im really real!"}})
+
+RestClient.delete(url)
