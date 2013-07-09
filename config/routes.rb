@@ -10,10 +10,12 @@ FirstRoutes::Application.routes.draw do
   # put 'users/:id' => 'users#update'
   # delete 'users/:id' => 'users#destroy'
 
+  get 'users/token' => 'users#get_id'
+  get 'users/login' => 'users#get_token'
+
   resources :users, :except => [:new, :edit] do
     resources :contacts, :only => [:index]
     resources :favorites, :only => [:index, :create]
-
     delete 'favorites' => 'favorites#destroy', :as => 'favorite'
   end
 

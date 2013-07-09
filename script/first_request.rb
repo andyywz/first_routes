@@ -5,13 +5,8 @@ url = Addressable::URI.new(
   scheme: 'http',
   host: 'localhost',
   port: 3000,
-  path: '/users/1/favorites.json',
-  # query_values: {
-  #   'some_category[a_key]' => 'another value',
-  #   'some_category[a_second_key]' => 'yet another value',
-  #   'some_category[inner_inner_hash][key]' => 'value',
-  #   'something_else' => 'aaahhhh'
-  # }
+  path: '/users/1/contacts.json',
+  query_values: {token: "1fVogaLW5y0CZQ=="}
 ).to_s
 
 
@@ -26,4 +21,5 @@ url = Addressable::URI.new(
 
 #RestClient.delete(url)
 # RestClient.get(url)
-RestClient.post(url, {favorite: {contact_id: 3}})
+# RestClient.post(url, {favorite: {contact_id: 3}})
+RestClient.get(url)

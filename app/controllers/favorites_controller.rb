@@ -1,11 +1,12 @@
 class FavoritesController < ApplicationController
+  before_filter :authenticate_user
+
   def index
     @favorites = User.find(params[:user_id]).favorites
     render :json => @favorites
   end
 
   def create
-    p params[:contact_id]
     favorite = Favorite.new(params[:favorite])
     if favorite.save!
       render :json => favorite
